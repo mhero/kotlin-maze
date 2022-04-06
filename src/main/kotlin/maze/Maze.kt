@@ -1,10 +1,23 @@
 package maze
 
-import items.Coordinates
 import items.Characters
+import items.Coordinates
 
-class Maze(var dimensions: Coordinates) {
+
+class Maze(private var dimensions: Coordinates) {
     private val maze = MazeGenerator(dimensions).generateMaze()
+
+    fun outsideLimits(x: Int, y: Int): Boolean {
+        return x < 0 || y < 0 || x > dimensions.x - 1 || y > dimensions.y - 1
+    }
+
+    fun hasFloorAt(x: Int, y: Int): Boolean {
+        return maze[x][y] and 1 == 0
+    }
+
+    fun hasWallAt(x: Int, y: Int): Boolean {
+        return maze[x][y] and 8 == 0
+    }
 
     fun display(characters: Characters) {
         val x = dimensions.x
