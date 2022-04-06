@@ -6,9 +6,7 @@ import java.io.IOException
 class Game {
     private val maze: Maze
     private val characters: Characters
-
     private val MAZE_SIZE = 5
-
 
     init {
         maze = Maze(Coordinates(MAZE_SIZE, MAZE_SIZE))
@@ -20,6 +18,9 @@ class Game {
         maze.display(characters)
     }
 
+    fun moveHeroForward() {
+        characters.moveHeroForwardIn(this.maze)
+    }
 
     private fun cls() {
         try {

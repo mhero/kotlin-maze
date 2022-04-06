@@ -1,5 +1,7 @@
 package items
 
+import maze.Maze
+
 class Characters(mazeSize: Int) {
 
     private val ENEMY_AMOUNT = 8
@@ -15,6 +17,10 @@ class Characters(mazeSize: Int) {
                 Enemy(validCoordinate(mazeSize), ENEMY_POWER)
             )
         }
+    }
+
+    fun moveHeroForwardIn(maze: Maze) {
+        hero.moveForwardIn(maze)
     }
 
     fun spaceFor(coordinate: Coordinates): String {
