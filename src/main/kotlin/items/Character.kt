@@ -1,7 +1,7 @@
 package items
 
-abstract class Character(initialPosition: Coordinates, power: Int) {
-     var currePosition = initialPosition
+abstract class Character(initialPosition: Coordinates, val power: Int) {
+    var curentPosition = initialPosition
 
-    abstract fun getLogo():String
+    abstract fun getLogo(): String
 }
