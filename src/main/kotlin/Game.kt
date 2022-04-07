@@ -22,6 +22,18 @@ class Game {
         characters.moveHeroForwardIn(this.maze)
     }
 
+    fun turnHeroLeft() {
+        characters.turnHeroLeft()
+    }
+
+    fun turnHeroRight() {
+        characters.turnHeroRight()
+    }
+
+    fun rotateHero180() {
+        characters.rotateHero180()
+    }
+
     private fun cls() {
         try {
             val operatingSystem = System.getProperty("os.name")

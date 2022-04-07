@@ -23,6 +23,18 @@ class Characters(mazeSize: Int) {
         hero.moveForwardIn(maze)
     }
 
+    fun turnHeroLeft() {
+        hero.turnLeft()
+    }
+
+    fun turnHeroRight() {
+        hero.turnRight()
+    }
+
+    fun rotateHero180() {
+        hero.rotate180()
+    }
+
     fun spaceFor(coordinate: Coordinates): String {
         val distinctBy = characters.firstOrNull { it.currentPosition.equals(coordinate) }
         return distinctBy?.getLogo() ?: " "
