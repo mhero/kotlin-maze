@@ -24,7 +24,7 @@ class Characters(mazeSize: Int) {
     }
 
     fun spaceFor(coordinate: Coordinates): String {
-        val distinctBy = characters.firstOrNull { it.curentPosition.equals(coordinate) }
+        val distinctBy = characters.firstOrNull { it.currentPosition.equals(coordinate) }
         return distinctBy?.getLogo() ?: " "
     }
 

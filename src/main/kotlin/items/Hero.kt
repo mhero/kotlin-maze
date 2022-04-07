@@ -12,7 +12,7 @@ class Hero(initialPosition: Coordinates, power: Int) : Character(initialPosition
 
     fun displayCurrentStats() {
         print("hero power: $power")
-        println("hero position: $curentPosition")
+        println("hero position: $currentPosition")
     }
 
     fun turnLeft() {
@@ -28,8 +28,8 @@ class Hero(initialPosition: Coordinates, power: Int) : Character(initialPosition
     }
 
     fun moveForwardIn(maze: Maze) {
-        if (isValidMoveFromHere(curentPosition, maze)) {
-            curentPosition = Coordinates(curentPosition.x + direction.xForward, curentPosition.y + direction.yForward)
+        if (isValidMoveFromHere(currentPosition, maze)) {
+            currentPosition = Coordinates(currentPosition.x + direction.xForward, currentPosition.y + direction.yForward)
         }
     }
 
