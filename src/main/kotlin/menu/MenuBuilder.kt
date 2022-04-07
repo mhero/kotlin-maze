@@ -7,7 +7,6 @@ import kotlin.system.exitProcess
 
 class MenuBuilder {
     private lateinit var menu: Menu
-    private lateinit var scanner: Scanner
     private lateinit var game: Game
 
     init {
@@ -66,7 +65,7 @@ class MenuBuilder {
         println(newMenu.generateText())
         while (true) {
             try {
-                scanner = Scanner(System.`in`)
+                val scanner = Scanner(System.`in`)
                 val actionNumber = scanner.nextLine().toInt()
                 menu.executeAction(actionNumber)
             } catch (ex: NumberFormatException) {

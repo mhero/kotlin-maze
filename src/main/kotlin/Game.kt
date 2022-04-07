@@ -15,7 +15,9 @@ class Game {
     }
 
     fun display() {
+        cls();
         maze.display(characters)
+        characters.displayHeroStats();
     }
 
     fun moveHeroForward() {

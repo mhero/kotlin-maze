@@ -11,7 +11,7 @@ class Hero(initialPosition: Coordinates, power: Int) : Character(initialPosition
     }
 
     fun displayCurrentStats() {
-        print("hero power: $power")
+        println("hero power: $power")
         println("hero position: $currentPosition")
     }
 

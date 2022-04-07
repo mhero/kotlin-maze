@@ -19,6 +19,10 @@ class Characters(mazeSize: Int) {
         }
     }
 
+    fun displayHeroStats() {
+        hero.displayCurrentStats()
+    }
+
     fun moveHeroForwardIn(maze: Maze) {
         hero.moveForwardIn(maze)
     }
