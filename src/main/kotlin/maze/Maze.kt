@@ -12,11 +12,11 @@ class Maze(private var dimensions: Coordinates) {
     }
 
     fun hasFloorAt(x: Int, y: Int): Boolean {
-        return maze[x][y] and 1 == 0
+        return (maze[x][y] and 1) == 0
     }
 
     fun hasWallAt(x: Int, y: Int): Boolean {
-        return maze[x][y] and 8 == 0
+        return (maze[x][y] and 8) == 0
     }
 
     fun display(characters: Characters) {
@@ -24,13 +24,13 @@ class Maze(private var dimensions: Coordinates) {
         val y = dimensions.y
         for (i in 0 until y) {
             for (j in 0 until x) {
-                print(if (maze[j][i] and 1 == 0) "+---" else "+   ")
+                print(if ((maze[j][i] and 1) == 0) "+---" else "+   ")
             }
             println("+")
             for (j in 0 until x) {
-                var event = if (maze[j][i] and 8 == 0) "| x " else "  x "
+                var event = if ((maze[j][i] and 8) == 0) "| x " else "  x "
                 if (j == x - 1 && i == y - 1) {
-                    event = if (maze[j][i] and 8 == 0) "| END" else " END"
+                    event = if ((maze[j][i] and 8) == 0) "| END" else " END"
                     print(event)
                 } else {
                     print(event.replace("x", characters.spaceFor(Coordinates(j, i))))

@@ -28,25 +28,26 @@ class Hero(initialPosition: Coordinates, power: Int) : Character(initialPosition
     }
 
     fun moveForwardIn(maze: Maze) {
-        if (isValidMoveFromHere(currentPosition, maze)) {
-            currentPosition = Coordinates(currentPosition.x + direction.xForward, currentPosition.y + direction.yForward)
+        val coordinate = Coordinates(currentPosition.x + direction.xForward, currentPosition.y + direction.yForward)
+        if (!invalidMoveFromHere(coordinate, maze)) {
+            currentPosition = coordinate
         }
     }
 
-    private fun isValidMoveFromHere(coordinate: Coordinates, maze: Maze): Boolean {
+    private fun invalidMoveFromHere(coordinate: Coordinates, maze: Maze): Boolean {
         val x = coordinate.x
         val y = coordinate.y
         return maze.outsideLimits(x, y) || hitsFloor(x, y, maze) || hitsWall(x, y, maze)
     }
 
     private fun hitsFloor(x: Int, y: Int, maze: Maze): Boolean {
-        return (direction == Direction.S && maze.hasFloorAt(x, y)
-                || direction == Direction.N && maze.hasFloorAt(x, y + 1))
+        return (direction == Direction.S && maze.hasFloorAt(x, y))
+                || (direction == Direction.N && maze.hasFloorAt(x, y + 1))
     }
 
     private fun hitsWall(x: Int, y: Int, maze: Maze): Boolean {
-        return (direction == Direction.E && maze.hasWallAt(x, y)
-                || direction == Direction.W && maze.hasWallAt(x + 1, y))
+        return (direction == Direction.E && maze.hasWallAt(x, y))
+                || (direction == Direction.W && maze.hasWallAt(x + 1, y))
     }
 
 }
