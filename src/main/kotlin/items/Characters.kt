@@ -1,6 +1,7 @@
 package items
 
 import maze.Maze
+import util.Util
 
 class Characters(mazeSize: Int) {
 
@@ -8,14 +9,12 @@ class Characters(mazeSize: Int) {
     private val ENEMY_POWER = 20
     private val HERO_POWER = 100
     private val hero: Hero = Hero(Coordinates(0, 0), HERO_POWER)
-    private val characters = mutableListOf<Character>()
+    private val enemies = mutableListOf<Character>()
 
     init {
-        characters.add(hero)
         repeat(ENEMY_AMOUNT) {
-            characters.add(
-                Enemy(validCoordinate(mazeSize), ENEMY_POWER)
-            )
+            val enemy = Enemy(validCoordinate(mazeSize), ENEMY_POWER)
+            enemies.add(enemy)
         }
     }
 
@@ -40,10 +39,13 @@ class Characters(mazeSize: Int) {
     }
 
     fun spaceFor(coordinate: Coordinates): String {
-        val distinctBy = characters.firstOrNull { it.currentPosition.equals(coordinate) }
-        return distinctBy?.getLogo() ?: " "
+        return getCharacterAt(coordinate)?.getLogo() ?: " "
     }
 
+    private fun getCharacterAt(coordinate: Coordinates): Character? {
+        return Util.merge(listOf(hero), enemies).firstOrNull { it.currentPosition.equals(coordinate) }
+    }
+    
     private fun validCoordinate(mazeSize: Int): Coordinates {
         var x: Int
         var y: Int

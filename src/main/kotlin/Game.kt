@@ -11,7 +11,6 @@ class Game {
     init {
         maze = Maze(Coordinates(MAZE_SIZE, MAZE_SIZE))
         characters = Characters(MAZE_SIZE)
-
     }
 
     fun display() {
