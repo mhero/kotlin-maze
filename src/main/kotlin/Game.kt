@@ -1,3 +1,4 @@
+import challenge.Battle
 import items.*
 import maze.Maze
 import java.io.IOException
@@ -21,7 +22,9 @@ class Game {
 
     fun moveHeroForward() {
         characters.moveHeroForwardIn(this.maze)
-        val enemy = characters.removeEnemyColliding()
+        if (characters.collidingEnemy()) {
+            characters.battle()
+        }
     }
 
     fun turnHeroLeft() {

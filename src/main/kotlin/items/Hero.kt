@@ -34,6 +34,10 @@ class Hero(initialPosition: Coordinates, power: Int) : Character(initialPosition
         }
     }
 
+    fun heroBattleOutcome(hit: Int){
+        this.power += hit;
+    }
+
     private fun invalidMoveFromHere(coordinate: Coordinates, maze: Maze): Boolean {
         val x = coordinate.x
         val y = coordinate.y

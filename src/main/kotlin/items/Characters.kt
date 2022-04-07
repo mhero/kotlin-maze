@@ -1,5 +1,6 @@
 package items
 
+import challenge.Battle
 import maze.Maze
 import util.Util
 
@@ -26,12 +27,21 @@ class Characters(mazeSize: Int) {
         hero.moveForwardIn(maze)
     }
 
-    fun removeEnemyColliding(): Character? {
+    fun collidingEnemy(): Boolean {
+        return getCharacterAt(hero.currentPosition, enemies) != null
+    }
+
+    fun battle() {
+        val battleResult = Battle().result()
+        val enemyPower = removeEnemyColliding()
+        val heroHit = if (battleResult) enemyPower else enemyPower * -1
+        hero.heroBattleOutcome(heroHit)
+    }
+
+    private fun removeEnemyColliding(): Int {
         val enemy = getCharacterAt(hero.currentPosition, enemies)
-        if (enemy != null) {
-            enemies.removeAll { it.currentPosition.equals(hero.currentPosition) }
-        }
-        return enemy
+        enemies.removeAll { it.currentPosition.equals(hero.currentPosition) }
+        return enemy?.power ?: 0
     }
 
     fun turnHeroLeft() {
