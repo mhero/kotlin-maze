@@ -26,6 +26,14 @@ class Characters(mazeSize: Int) {
         hero.moveForwardIn(maze)
     }
 
+    fun isThereCollision(): Boolean {
+        return getCharacterAt(hero.currentPosition, enemies) != null
+    }
+
+    fun removeEnemyColliding() {
+        enemies.removeAll { it.currentPosition.equals(hero.currentPosition) }
+    }
+
     fun turnHeroLeft() {
         hero.turnLeft()
     }
@@ -39,13 +47,16 @@ class Characters(mazeSize: Int) {
     }
 
     fun spaceFor(coordinate: Coordinates): String {
-        return getCharacterAt(coordinate)?.getLogo() ?: " "
+        return getCharacterAt(
+            coordinate,
+            Util.merge(listOf(hero), enemies)
+        )?.getLogo() ?: " "
     }
 
-    private fun getCharacterAt(coordinate: Coordinates): Character? {
-        return Util.merge(listOf(hero), enemies).firstOrNull { it.currentPosition.equals(coordinate) }
+    private fun getCharacterAt(coordinate: Coordinates, characters: List<Character>): Character? {
+        return characters.firstOrNull { it.currentPosition.equals(coordinate) }
     }
-    
+
     private fun validCoordinate(mazeSize: Int): Coordinates {
         var x: Int
         var y: Int
