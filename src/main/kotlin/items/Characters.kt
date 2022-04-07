@@ -26,12 +26,12 @@ class Characters(mazeSize: Int) {
         hero.moveForwardIn(maze)
     }
 
-    fun isThereCollision(): Boolean {
-        return getCharacterAt(hero.currentPosition, enemies) != null
-    }
-
-    fun removeEnemyColliding() {
-        enemies.removeAll { it.currentPosition.equals(hero.currentPosition) }
+    fun removeEnemyColliding(): Character? {
+        val enemy = getCharacterAt(hero.currentPosition, enemies)
+        if (enemy != null) {
+            enemies.removeAll { it.currentPosition.equals(hero.currentPosition) }
+        }
+        return enemy
     }
 
     fun turnHeroLeft() {

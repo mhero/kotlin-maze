@@ -21,9 +21,7 @@ class Game {
 
     fun moveHeroForward() {
         characters.moveHeroForwardIn(this.maze)
-        if (characters.isThereCollision()) {
-            characters.removeEnemyColliding()
-        }
+        val enemy = characters.removeEnemyColliding()
     }
 
     fun turnHeroLeft() {
