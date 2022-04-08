@@ -73,3 +73,7 @@ captures/
 *.iml
 *.iws
 *.ipr
+
+.DS_Store
+
+out/
