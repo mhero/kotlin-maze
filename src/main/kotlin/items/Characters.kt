@@ -48,6 +48,7 @@ class Characters(mazeSize: Int) {
         val battleResult = Battle().result()
         val enemyPower = removeEnemyColliding()
         val heroHit = if (battleResult) enemyPower else enemyPower * -1
+        Util.pressAnyKey("Press any key to play again...")
         hero.heroBattleOutcome(heroHit)
     }
 

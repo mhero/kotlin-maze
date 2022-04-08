@@ -18,6 +18,7 @@ class Trivia {
         cookingQuestions
             .add(Question("Do you put salt or sugar in your coffee?", listOf("salt", "sugar"), 2))
         questionsByTopic[Topic.COOKING] = cookingQuestions
+
         answers = listOf("is it? lol", "are you sure? I am asking...I'm not sure either", "uhmmm...")
     }
 

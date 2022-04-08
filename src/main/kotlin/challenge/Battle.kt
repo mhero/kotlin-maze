@@ -8,7 +8,11 @@ class Battle {
     fun result(): Boolean {
         val question = askQuestion()
         val answer = getAnswer()
-        return isCorrectAnswer(answer, question.correctAnswer)
+        val isCorrectAnswer = isCorrectAnswer(answer, question.correctAnswer)
+        if(isCorrectAnswer){
+            println("Correct!")
+        }
+        return isCorrectAnswer
     }
 
     private fun askQuestion(): Question {
@@ -30,10 +34,9 @@ class Battle {
 
     private fun randomizeAnswerResult(): Boolean {
         val rand = Random()
-        val answer = Trivia().answer
-        println()
+        println("Your answer was incorrect! Let's randomize if you still win")
         return if (rand.nextBoolean()) {
-            println(answer)
+            println(Trivia().answer)
             true
         } else {
             println("NOPE!")
