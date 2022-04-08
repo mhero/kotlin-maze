@@ -31,6 +31,19 @@ class Characters(mazeSize: Int) {
         return getCharacterAt(hero.currentPosition, enemies) != null
     }
 
+    fun heroIsAtEnd(maze: Maze): Boolean {
+        return hero.currentPosition.equals(maze.end())
+    }
+
+    fun heroScore() {
+        println(java.lang.String.format("Your score is %d", hero.power))
+        println("You finished the puzzle!")
+        if (hero.power < 0) {
+            println("...but with a negative score...so...haha!")
+        }
+        Util.pressAnyKey("Press any key to play again...")
+    }
+
     fun battle() {
         val battleResult = Battle().result()
         val enemyPower = removeEnemyColliding()

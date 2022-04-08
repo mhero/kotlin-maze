@@ -1,7 +1,7 @@
-import challenge.Battle
 import items.*
 import maze.Maze
 import java.io.IOException
+import java.lang.String
 
 
 class Game {
@@ -26,6 +26,15 @@ class Game {
             characters.battle()
         }
     }
+
+    fun finished(): Boolean {
+        return characters.heroIsAtEnd(maze)
+    }
+
+    fun finishGame() {
+        characters.heroScore()
+    }
+
 
     fun turnHeroLeft() {
         characters.turnHeroLeft()

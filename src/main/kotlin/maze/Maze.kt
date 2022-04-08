@@ -11,6 +11,10 @@ class Maze(private var dimensions: Coordinates) {
         return x < 0 || y < 0 || x > dimensions.x - 1 || y > dimensions.y - 1
     }
 
+    fun end(): Coordinates {
+        return Coordinates(dimensions.x - 1, dimensions.y - 1)
+    }
+
     fun hasFloorAt(x: Int, y: Int): Boolean {
         return (maze[x][y] and 1) == 0
     }

@@ -37,7 +37,10 @@ class MenuBuilder {
         }
         subMenuGame.putAction("step forward") {
             game.moveHeroForward()
-
+            if (game.finished()) {
+                game.finishGame()
+                game = Game()
+            }
             game.display()
             activateMenu(subMenuGame)
         }
