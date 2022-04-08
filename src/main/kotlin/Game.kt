@@ -1,8 +1,6 @@
 import items.*
 import maze.Maze
 import java.io.IOException
-import java.lang.String
-
 
 class Game {
     private val maze: Maze
