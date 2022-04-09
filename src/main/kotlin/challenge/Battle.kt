@@ -3,8 +3,6 @@ package challenge
 import java.util.*
 
 class Battle {
-    private lateinit var sc: Scanner
-
     fun result(): Boolean {
         val question = askQuestion()
         val answer = getAnswer()
@@ -25,7 +23,7 @@ class Battle {
     }
 
     private fun getAnswer(): Int {
-        sc = Scanner(System.`in`)
+        val sc = Scanner(System.`in`)
         return sc.nextInt()
     }
 

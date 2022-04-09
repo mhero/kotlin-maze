@@ -2,6 +2,7 @@ package menu
 
 class Menu(private val name: String, private val text: String) {
     private val actionsMap = LinkedHashMap<String, Runnable>()
+
     fun putAction(name: String, action: Runnable) {
         actionsMap[name] = action
     }

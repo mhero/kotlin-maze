@@ -5,7 +5,6 @@ import items.Coordinates
 open class MazeGenerator(private var dimensions: Coordinates) {
     private var maze: Array<IntArray> = Array(this.dimensions.x) { IntArray(this.dimensions.y) }
 
-
     fun generateMaze(): Array<IntArray> {
         generateMaze(0, 0)
         return maze
