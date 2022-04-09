@@ -5,11 +5,11 @@ import java.io.IOException
 class Game {
     private val maze: Maze
     private val characters: Characters
-    private val MAZE_SIZE = 5
+    private val MAZE_DIMENSIONS = Coordinates(8,6)
 
     init {
-        maze = Maze(Coordinates(MAZE_SIZE, MAZE_SIZE))
-        characters = Characters(MAZE_SIZE)
+        maze = Maze(MAZE_DIMENSIONS)
+        characters = Characters(MAZE_DIMENSIONS)
     }
 
     fun display() {

@@ -48,4 +48,18 @@ class Maze(private var dimensions: Coordinates) {
         println("+")
     }
 
+    companion object {
+        fun validCoordinate(mazeDimensions: Coordinates): Coordinates {
+            var x: Int
+            var y: Int
+
+            do {
+                x = (0 until mazeDimensions.y).random()
+                y = (0 until mazeDimensions.y).random()
+            } while ((x == 0 && y == 0) || (x == mazeDimensions.x - 1 && y == mazeDimensions.y - 1))
+
+            return Coordinates(x, y)
+        }
+    }
+
 }
