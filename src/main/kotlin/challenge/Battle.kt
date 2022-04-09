@@ -4,10 +4,11 @@ import java.util.*
 
 class Battle {
     fun result(): Boolean {
-        val question = askQuestion()
-        val answer = getAnswer()
-        val isCorrectAnswer = isCorrectAnswer(answer, question.correctAnswer)
-        if(isCorrectAnswer){
+        val isCorrectAnswer = isCorrectAnswer(
+            getAnswer(),
+            askQuestion().correctAnswer
+        )
+        if (isCorrectAnswer) {
             println("Correct!")
         }
         return isCorrectAnswer
@@ -31,9 +32,8 @@ class Battle {
         if (userAnswer == correctAnswer) true else randomizeAnswerResult()
 
     private fun randomizeAnswerResult(): Boolean {
-        val rand = Random()
         println("Your answer was incorrect! Let's randomize if you still win")
-        return if (rand.nextBoolean()) {
+        return if (Random().nextBoolean()) {
             println(Trivia().answer)
             true
         } else {

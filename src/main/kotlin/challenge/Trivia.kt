@@ -24,14 +24,12 @@ class Trivia {
 
     fun getQuestion(topic: Topic?): Question {
         val questionTopic = topic ?: Topic.randomTopic()
-        val random = Random()
         val questions = questionsByTopic[questionTopic]!!
-        return questions[random.nextInt(questions.size)]
+        return questions[Random().nextInt(questions.size)]
     }
 
     val answer: String
         get() {
-            val random = Random()
-            return answers[random.nextInt(answers.size)]
+            return answers[Random().nextInt(answers.size)]
         }
 }
