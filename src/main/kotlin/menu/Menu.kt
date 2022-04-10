@@ -8,15 +8,16 @@ class Menu(private val name: String, private val text: String) {
     }
 
     fun generateText(): String {
-        val sb = StringBuilder()
-        sb.append(name).append(": ")
-        sb.append(text).append(":\n")
-        val actionNames: List<String> = ArrayList(actionsMap.keys)
-        for (i in actionNames.indices) {
-            sb.append(String.format(" %d: %s%n", i + 1, actionNames[i]))
+        val actionNames = ArrayList(actionsMap.keys)
+
+        return StringBuilder().run {
+            append("$name: $text:\n")
+            for (i in actionNames.indices) {
+                append(String.format(" %d: %s%n", i + 1, actionNames[i]))
+            }
+            append("Enter number and press return :)")
+            toString()
         }
-        sb.append("Enter number and press return :)")
-        return sb.toString()
     }
 
     fun executeAction(actionNumber: Int) {
