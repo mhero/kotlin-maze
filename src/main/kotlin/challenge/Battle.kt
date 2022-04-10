@@ -4,9 +4,11 @@ import java.util.*
 
 class Battle {
     fun result(): Boolean {
+        val question = askQuestion()
+        val answer = getAnswer()
         val isCorrectAnswer = isCorrectAnswer(
-            getAnswer(),
-            askQuestion().correctAnswer
+            answer,
+            question.correctAnswer
         )
         if (isCorrectAnswer) {
             println("Correct!")
@@ -24,8 +26,7 @@ class Battle {
     }
 
     private fun getAnswer(): Int {
-        val sc = Scanner(System.`in`)
-        return sc.nextInt()
+        return Scanner(System.`in`).nextInt()
     }
 
     private fun isCorrectAnswer(userAnswer: Int, correctAnswer: Int): Boolean =
