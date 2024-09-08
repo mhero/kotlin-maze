@@ -34,7 +34,7 @@ class Hero(initialPosition: Coordinates, power: Int) : Character(initialPosition
         }
     }
 
-    fun heroBattleOutcome(hit: Int){
+    fun heroBattleOutcome(hit: Int) {
         this.power += hit;
     }
 

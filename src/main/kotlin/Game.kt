@@ -5,7 +5,7 @@ import java.io.IOException
 class Game {
     private val maze: Maze
     private val characters: Characters
-    private val MAZE_DIMENSIONS = Coordinates(8,6)
+    private val MAZE_DIMENSIONS = Coordinates(8, 6)
 
     init {
         maze = Maze(MAZE_DIMENSIONS)

@@ -1,18 +1,19 @@
 # Kotlin maze game
+
 Maze generator game based on kotlin (another implementation of https://github.com/mhero/java-maze)
 
 #### Build: ####
 
 - Install gradle
 - Run in terminal command:
-	
+
 ```bash
 ./gradlew clean jar
 ./gradlew build
 ```
 
 #### Run: ####
-	
+
 ```bash
 java -jar build/libs/kotlin-maze-1.0-SNAPSHOT-standalone.jar
 ```
