@@ -24,28 +24,48 @@ class Maze(private var dimensions: Coordinates) {
     }
 
     fun display(characters: Characters) {
-        val x = dimensions.x
-        val y = dimensions.y
-        for (i in 0 until y) {
-            for (j in 0 until x) {
-                print(if ((maze[j][i] and 1) == 0) "+---" else "+   ")
+        val width = dimensions.x
+        val height = dimensions.y
+        val closedHorizontal = "+---"
+        val openHorizontal = "+   "
+        val closedVertical = "|"
+        val openVertical = " "
+        val endLabel = "END"
+        val border = "+"
+
+        fun printHorizontalWalls(row: Int) {
+            val rowWalls = StringBuilder()
+            for (column in 0 until width) {
+                rowWalls.append(if ((maze[column][row] and 1) == 0) closedHorizontal else openHorizontal)
             }
-            println("+")
-            for (j in 0 until x) {
-                var event = if ((maze[j][i] and 8) == 0) "| x " else "  x "
-                if (j == x - 1 && i == y - 1) {
-                    event = if ((maze[j][i] and 8) == 0) "| END" else " END"
-                    print(event)
+            rowWalls.append(border)
+            println(rowWalls)
+        }
+
+        fun printVerticalWalls(row: Int) {
+            val rowWalls = StringBuilder()
+            for (column in 0 until width) {
+                val coordinates = Coordinates(column, row)
+                val cellContent = characters.spaceFor(coordinates)
+                val wallOrSpace = if ((maze[column][row] and 8) == 0) closedVertical else openVertical
+                val cellText = if (column == width - 1 && row == height - 1) {
+                    if (wallOrSpace == closedVertical) "$wallOrSpace$endLabel" else "$openVertical$endLabel"
                 } else {
-                    print(event.replace("x", characters.spaceFor(Coordinates(j, i))))
+                    "$wallOrSpace $cellContent "
                 }
+                rowWalls.append(cellText)
             }
-            println("|")
+            rowWalls.append(closedVertical)
+            println(rowWalls)
         }
-        for (j in 0 until x) {
-            print("+---")
+
+        for (row in 0 until height) {
+            printHorizontalWalls(row)
+            printVerticalWalls(row)
         }
-        println("+")
+
+        // Print the bottom border
+        println((closedHorizontal.repeat(width)) + border)
     }
 
     companion object {
